@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cổng Đăng Nhập & Đăng Ký | Modern Auth</title>
+  <meta name="description" content="Giao diện Đăng nhập và Đăng ký hiện đại với hiệu ứng trượt mượt mà, tông màu chủ đạo Xanh lá - Trắng - Vàng.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Decorative Shapes / Glows -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <div class="bg-shape shape-3"></div>
+
+  <!-- Mobile Segmented Tab Switcher (Visible only on mobile/tablet) -->
+  <div class="mobile-tabs" id="mobileTabs">
+    <button class="mobile-tab-btn active" id="tabSignIn">
+      <i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng nhập
+    </button>
+    <button class="mobile-tab-btn" id="tabSignUp">
+      <i class="fa-solid fa-user-plus"></i> Đăng ký
+    </button>
+  </div>
+
+  <!-- Main Container -->
+  <div class="auth-container" id="authContainer">
+    
+    <!-- Sign Up Form Container -->
+    <div class="form-container sign-up-container">
+      <form id="signUpForm" novalidate>
+        <div class="brand-badge">
+          <i class="fa-solid fa-leaf"></i> EcoGold Auth
+        </div>
+        <h2 class="form-title">Tạo Tài Khoản Mới</h2>
+        <p class="form-subtitle">Tham gia cùng chúng tôi để trải nghiệm hệ sinh thái tuyệt vời</p>
+
+        <!-- Social login icons -->
+        <div class="social-container">
+          <button type="button" class="social-btn" title="Đăng ký với Google">
+            <i class="fa-brands fa-google"></i>
+          </button>
+          <button type="button" class="social-btn" title="Đăng ký với Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </button>
+          <button type="button" class="social-btn" title="Đăng ký với GitHub">
+            <i class="fa-brands fa-github"></i>
+          </button>
+        </div>
+        <span class="divider">hoặc sử dụng email để đăng ký</span>
+
+        <!-- Input: Full Name -->
+        <div class="input-group">
+          <i class="fa-regular fa-user input-icon"></i>
+          <input type="text" id="regName" placeholder="Họ và tên của bạn" required autocomplete="name">
+          <span class="error-msg" id="regNameError"></span>
+        </div>
+
+        <!-- Input: Email -->
+        <div class="input-group">
+          <i class="fa-regular fa-envelope input-icon"></i>
+          <input type="email" id="regEmail" placeholder="Địa chỉ email" required autocomplete="email">
+          <span class="error-msg" id="regEmailError"></span>
+        </div>
+
+        <!-- Input: Password -->
+        <div class="input-group">
+          <i class="fa-solid fa-lock input-icon"></i>
+          <input type="password" id="regPassword" placeholder="Mật khẩu (tối thiểu 6 ký tự)" required autocomplete="new-password">
+          <i class="fa-regular fa-eye toggle-pwd" data-target="regPassword"></i>
+          <span class="error-msg" id="regPasswordError"></span>
+        </div>
+
+        <!-- Password Strength Meter -->
+        <div class="strength-meter-container" id="strengthContainer">
+          <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+          <span class="strength-text" id="strengthText">Độ mạnh mật khẩu</span>
+        </div>
+
+        <!-- Input: Confirm Password -->
+        <div class="input-group">
+          <i class="fa-solid fa-shield-halved input-icon"></i>
+          <input type="password" id="regConfirmPassword" placeholder="Xác nhận lại mật khẩu" required autocomplete="new-password">
+          <i class="fa-regular fa-eye toggle-pwd" data-target="regConfirmPassword"></i>
+          <span class="error-msg" id="regConfirmPasswordError"></span>
+        </div>
+
+        <!-- Terms checkbox -->
+        <label class="checkbox-container">
+          <input type="checkbox" id="regTerms">
+          <span class="checkmark"></span>
+          <span class="terms-label">Tôi đồng ý với <a href="#" class="accent-link">Điều khoản & Chính sách</a></span>
+        </label>
+        <span class="error-msg terms-error" id="regTermsError"></span>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" id="btnSignUpSubmit">
+          <span>Đăng Ký Ngay</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Sign In Form Container -->
+    <div class="form-container sign-in-container">
+      <form id="signInForm" novalidate>
+        <div class="brand-badge">
+          <i class="fa-solid fa-leaf"></i> EcoGold Auth
+        </div>
+        <h2 class="form-title">Đăng Nhập Tài Khoản</h2>
+        <p class="form-subtitle">Chào mừng bạn trở lại! Vui lòng nhập thông tin của bạn</p>
+
+        <!-- Social login icons -->
+        <div class="social-container">
+          <button type="button" class="social-btn" title="Đăng nhập với Google">
+            <i class="fa-brands fa-google"></i>
+          </button>
+          <button type="button" class="social-btn" title="Đăng nhập với Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </button>
+          <button type="button" class="social-btn" title="Đăng nhập với GitHub">
+            <i class="fa-brands fa-github"></i>
+          </button>
+        </div>
+        <span class="divider">hoặc sử dụng tài khoản email</span>
+
+        <!-- Input: Email -->
+        <div class="input-group">
+          <i class="fa-regular fa-envelope input-icon"></i>
+          <input type="email" id="loginEmail" placeholder="Địa chỉ email hoặc tài khoản" required autocomplete="email">
+          <span class="error-msg" id="loginEmailError"></span>
+        </div>
+
+        <!-- Input: Password -->
+        <div class="input-group">
+          <i class="fa-solid fa-lock input-icon"></i>
+          <input type="password" id="loginPassword" placeholder="Mật khẩu của bạn" required autocomplete="current-password">
+          <i class="fa-regular fa-eye toggle-pwd" data-target="loginPassword"></i>
+          <span class="error-msg" id="loginPasswordError"></span>
+        </div>
+
+        <!-- Remember Me & Forgot Password -->
+        <div class="form-options">
+          <label class="checkbox-container">
+            <input type="checkbox" id="loginRemember" checked>
+            <span class="checkmark"></span>
+            <span>Ghi nhớ đăng nhập</span>
+          </label>
+          <a href="#" class="forgot-link" id="btnForgotPassword">Quên mật khẩu?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" id="btnSignInSubmit">
+          <span>Đăng Nhập</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <div class="demo-credentials">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Tài khoản thử nghiệm: <strong>demo@ecogold.vn</strong> / Mật khẩu: <strong>123456</strong></span>
+        </div>
+      </form>
+    </div>
+
+    <!-- Sliding Overlay Container -->
+    <div class="overlay-container">
+      <div class="overlay">
+        
+        <!-- Left Overlay (Visible when Register is active) -->
+        <div class="overlay-panel overlay-left">
+          <div class="overlay-badge">
+            <i class="fa-solid fa-star"></i> Đã có tài khoản?
+          </div>
+          <h2 class="overlay-title">Chào Mừng Trở Lại!</h2>
+          <p class="overlay-desc">
+            Nếu bạn đã có tài khoản tại EcoGold, hãy đăng nhập ngay để tiếp tục công việc và quản lý thông tin của mình.
+          </p>
+          <button class="btn btn-ghost" id="signIn">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Đăng Nhập</span>
+          </button>
+          
+          <div class="overlay-decorations">
+            <div class="decor-circle c1"></div>
+            <div class="decor-circle c2"></div>
+          </div>
+        </div>
+
+        <!-- Right Overlay (Visible when Login is active) -->
+        <div class="overlay-panel overlay-right">
+          <div class="overlay-badge">
+            <i class="fa-solid fa-sparkles"></i> Thành viên mới?
+          </div>
+          <h2 class="overlay-title">Xin Chào Bạn Mới!</h2>
+          <p class="overlay-desc">
+            Nhập thông tin cá nhân của bạn và bắt đầu hành trình tuyệt vời cùng hệ thống bảo mật EcoGold.
+          </p>
+          <button class="btn btn-ghost" id="signUp">
+            <span>Tạo Tài Khoản Mới</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div class="overlay-decorations">
+            <div class="decor-circle c1"></div>
+            <div class="decor-circle c2"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal-backdrop" id="forgotModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeForgotModal">&times;</button>
+      <div class="modal-icon">
+        <i class="fa-solid fa-key"></i>
+      </div>
+      <h3 class="modal-title">Khôi Phục Mật Khẩu</h3>
+      <p class="modal-desc">Nhập địa chỉ email đăng ký để nhận liên kết thiết lập lại mật khẩu bảo mật.</p>
+      <form id="forgotForm">
+        <div class="input-group">
+          <i class="fa-regular fa-envelope input-icon"></i>
+          <input type="email" id="forgotEmail" placeholder="Nhập email của bạn" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          <span>Gửi Liên Kết Khôi Phục</span>
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
