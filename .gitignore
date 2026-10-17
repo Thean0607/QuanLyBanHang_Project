@@ -1,0 +1,9 @@
+node_modules/
+vendor/
+_pycache_
+.env
+*.local
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
